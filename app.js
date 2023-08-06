@@ -24,7 +24,16 @@ app.use('/graphql', graphqlHTTP({
         mutation: RootMutation
       }
     `),
-    rootValue: {}
+    rootValue: {
+        events: () => {
+            return ["Trekking", "Exploring Nature", "Music", "Watching Movies"];
+        },
+        createEvent: (args) => {
+            const eventName = args.name;
+            return eventName;
+        }
+    },
+    graphiql: true
 }));
 
 
